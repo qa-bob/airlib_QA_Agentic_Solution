@@ -1,0 +1,27 @@
+{
+  "name": "airlib-qa-agentic-solution",
+  "version": "1.0.0",
+  "description": "Playwright + TypeScript QA automation framework for Airlib (https://www.airlib.co/)",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:smoke": "playwright test tests/smoke/ --reporter=line",
+    "test:functional": "playwright test tests/functional/ --reporter=line",
+    "test:regression": "playwright test tests/regression/ --reporter=line",
+    "test:accessibility": "playwright test --grep @accessibility",
+    "test:mobile": "playwright test --project=mobile",
+    "test:report": "playwright show-report",
+    "test:ui": "playwright test --ui",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .ts"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^25.9.2",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5"
+  }
+}
