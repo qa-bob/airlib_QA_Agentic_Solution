@@ -13,7 +13,8 @@ export class AirQualityMapsPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.pageHeading = page.getByRole('heading', { level: 1 }).first();
+    // Wix renders content headings as h2 on this page — no h1 exists
+    this.pageHeading = page.getByRole('heading').first();
     this.contentSection = page.locator('[data-testid="page"], #SITE_PAGES').first();
     this.mapRelatedContent = page.getByText(/air quality|pollution|maps/i).first();
   }

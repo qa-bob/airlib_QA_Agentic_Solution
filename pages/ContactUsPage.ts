@@ -27,32 +27,24 @@ export class ContactUsPage extends BasePage {
       'form, [data-testid="form"], [data-hook="form-component"]'
     ).first();
 
-    // Form fields matched by label, placeholder, or aria-label
-    this.nameInput = page
-      .getByLabel(/name/i)
-      .or(page.getByPlaceholder(/name/i))
-      .first();
+    // Form fields — from live page snapshot: labels are "First Name", "Email", placeholder "Write a message"
+    this.nameInput = page.getByLabel('First Name').or(page.getByPlaceholder(/first name|name/i)).first();
 
-    this.emailInput = page
-      .getByLabel(/email/i)
-      .or(page.getByPlaceholder(/email/i))
-      .first();
+    this.emailInput = page.getByLabel('Email').or(page.getByPlaceholder(/email/i)).first();
 
     this.messageInput = page
-      .getByLabel(/message|subject|how can/i)
-      .or(page.getByPlaceholder(/message|subject|how can/i))
+      .getByPlaceholder(/write a message|message/i)
+      .or(page.getByLabel(/message|subject/i))
       .first();
 
-    this.submitButton = page
-      .getByRole('button', { name: /submit|send|go|contact/i })
-      .first();
+    this.submitButton = page.getByRole('button', { name: /^submit$/i }).first();
 
     this.successMessage = page
       .getByText(/thank you|message sent|submitted|received/i)
       .first();
 
     this.errorMessage = page
-      .getByText(/error|required|invalid|please fill/i)
+      .getByText(/required|please fill|cannot be empty|invalid/i)
       .first();
   }
 
